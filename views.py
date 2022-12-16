@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 
 views = Blueprint(__name__,"views")
 
@@ -20,3 +20,7 @@ def get_json():
 def get_data():
   data = request.json
   return jsonify(data)
+
+@views.route("/go-to-home")
+def go_to_home():
+  return redirect(url_for("views.get_json"))
